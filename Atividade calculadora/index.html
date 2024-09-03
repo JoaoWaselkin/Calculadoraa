@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Simples</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #333;
+            color: white;
+            text-align: center;
+        }
+        .calculator {
+            background-color: rgba(255, 255, 255, 0.8);
+            width: 300px;
+            padding: 20px;
+            margin: 50px auto;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+        .calculator h1 {
+            color: limegreen;
+        }
+        input[type="text"] {
+            width: 80%;
+            padding: 10px;
+            margin-bottom: 10px;
+            font-size: 18px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            text-align: center;
+        }
+        .buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .buttons button {
+            width: 60px;
+            height: 60px;
+            margin: 5px;
+            font-size: 24px;
+            border-radius: 50%;
+            border: none;
+            background: linear-gradient(to bottom, #00b4db, #0083b0);
+            color: white;
+            cursor: pointer;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 24px;
+            color: black;
+            background-color: white;
+            padding: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="calculator">
+        <h1>CALCULADORA - SIMPLES</h1>
+        <input type="text" id="value1" placeholder="Valor 1">
+        <input type="text" id="value2" placeholder="Valor 2">
+        <div class="buttons">
+            <button onclick="calculate('+')">+</button>
+            <button onclick="calculate('-')">-</button>
+            <button onclick="calculate('*')">*</button>
+            <button onclick="calculate('/')">/</button>
+            <button onclick="clearResult()">CE</button>
+        </div>
+        <div id="result">0</div>
+    </div>
+
+    <script>
+        function calculate(operation) {
+            var value1 = parseFloat(document.getElementById('value1').value);
+            var value2 = parseFloat(document.getElementById('value2').value);
+            var result = 0;
+
+            if (isNaN(value1) || isNaN(value2)) {
+                document.getElementById('result').innerHTML = "Por favor, insira números válidos!";
+                return;
+            }
+
+            switch(operation) {
+                case '+':
+                    result = value1 + value2;
+                    break;
+                case '-':
+                    result = value1 - value2;
+                    break;
+                case '*':
+                    result = value1 * value2;
+                    break;
+                case '/':
+                    result = value1 / value2;
+                    break;
+            }
+
+            document.getElementById('result').innerHTML = result;
+        }
+
+        function clearResult() {
+            document.getElementById('value1').value = '';
+            document.getElementById('value2').value = '';
+            document.getElementById('result').innerHTML = '0';
+        }
+    </script>
+
+</body>
+</html>
